@@ -3,7 +3,7 @@ class Question {
   String questionText;
   bool answer;
 
-  Question({q, a}) {
+  Question({String q, bool a}) {
     questionText = q;
     answer = a;
   }
