@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizzler/question.dart';
 
 void main() => runApp(Quizzler());
 
@@ -27,12 +28,11 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
 
-  List questionTexts = [
-    'aaaa',
-    'bbb',
-    'ccc',
+  List<Question> questionBank = [
+    Question(q: 'is  this a pen?', a: true),
+    Question(q: 'is  this a pencil?', a: false),
+    Question(q: 'is  this a note?', a: false),
   ];
-  List answers = [ true, true, false ];
   int questionNumbers = 0;
 
   @override
@@ -47,7 +47,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questionTexts[questionNumbers],
+                questionBank[questionNumbers].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -72,7 +72,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
-                bool correctAnswer = answers[questionNumbers];
+                bool correctAnswer = questionBank[questionNumbers].answer;
 
                 if (correctAnswer == true) {
                   print('User answers is correct!');
@@ -101,7 +101,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
-                bool correctAnswer = answers[questionNumbers];
+                bool correctAnswer = questionBank[questionNumbers].answer;
 
                 if (correctAnswer == false) {
                   print('User answers is correct!');
